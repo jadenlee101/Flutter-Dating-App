@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "107105803701",
+    "project_id": "foggle-18d3f",
+    "storage_bucket": "foggle-18d3f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107105803701:android:f454fd467e8af30367cdfc",
+        "android_client_info": {
+          "package_name": "com.oaklib.foggle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107105803701-q7q5r2llt9fhut9u1ve93mg0urjndc3q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq6aXGpNI85jWG03bZLw1vgKuyCfpYV3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107105803701-q7q5r2llt9fhut9u1ve93mg0urjndc3q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "107105803701-121hhuhokndthj0i2mic9j1r17ul2i92.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oaklib.foggle"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
