@@ -48,60 +48,22 @@ class Pictures extends StatelessWidget {
                   return Center(child: CircularProgressIndicator());
                 }
                 if (state is ImagesLoaded) {
-                  var imagesCount = state.imageUrls.length;
-                  return Column(
-                    children: [
-                      Row(
-                        children: [
-                          (imagesCount > 0)
+                  var imageCount = state.imageUrls.length;
+                  return SizedBox(
+                    height: 350,
+                    child: GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3, childAspectRatio: 0.66),
+                        itemCount: 6,
+                        itemBuilder: (BuildContext context, int index) {
+                          return (imageCount > index)
                               ? CustomImageContainer(
                                   tabController: tabController,
-                                  imageUrl: state.imageUrls[0],
-                                )
+                                  imageUrl: state.imageUrls[index])
                               : CustomImageContainer(
-                                  tabController: tabController),
-                          (imagesCount > 1)
-                              ? CustomImageContainer(
-                                  tabController: tabController,
-                                  imageUrl: state.imageUrls[1],
-                                )
-                              : CustomImageContainer(
-                                  tabController: tabController),
-                          (imagesCount > 2)
-                              ? CustomImageContainer(
-                                  tabController: tabController,
-                                  imageUrl: state.imageUrls[2],
-                                )
-                              : CustomImageContainer(
-                                  tabController: tabController),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          (imagesCount > 3)
-                              ? CustomImageContainer(
-                                  tabController: tabController,
-                                  imageUrl: state.imageUrls[3],
-                                )
-                              : CustomImageContainer(
-                                  tabController: tabController),
-                          (imagesCount > 4)
-                              ? CustomImageContainer(
-                                  tabController: tabController,
-                                  imageUrl: state.imageUrls[4],
-                                )
-                              : CustomImageContainer(
-                                  tabController: tabController),
-                          (imagesCount > 5)
-                              ? CustomImageContainer(
-                                  tabController: tabController,
-                                  imageUrl: state.imageUrls[5],
-                                )
-                              : CustomImageContainer(
-                                  tabController: tabController),
-                        ],
-                      ),
-                    ],
+                                  tabController: tabController);
+                        }),
                   );
                 } else {
                   return Text('Something wrong');
