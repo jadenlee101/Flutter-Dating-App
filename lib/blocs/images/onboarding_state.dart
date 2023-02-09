@@ -1,4 +1,3 @@
-/*
 part of 'onboarding_bloc.dart';
 
 abstract class OnboardingState extends Equatable {
@@ -18,4 +17,3 @@ class OnboardingLoaded extends OnboardingState {
   @override
   List<Object> get props => [user];
 }
-*/

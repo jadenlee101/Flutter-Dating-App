@@ -1,4 +1,3 @@
-/*
 part of 'onboarding_bloc.dart';
 
 abstract class OnboardingEvent extends Equatable {
@@ -16,12 +15,12 @@ class StartOnboarding extends OnboardingEvent {
       id: ' ',
       name: ' ',
       age: 0,
-      //gender: ' ',
+      gender: ' ',
       imageUrls: [],
       jobTitle: ' ',
       interests: [],
       bio: ' ',
-      //location: ' ',
+      location: ' ',
     ),
   });
 
@@ -50,4 +49,3 @@ class UpdateUserImages extends OnboardingEvent {
   @override
   List<Object?> get props => [user, image];
 }
-*/

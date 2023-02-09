@@ -12,15 +12,16 @@ class StorageRepository extends BaseStorageRepository {
       firebase_storage.FirebaseStorage.instance;
 
   @override
-  Future<void> uploadImage(XFile image) async {
+  Future<void> uploadImage(User user, XFile image) async {
     try {
       print('2');
       //await storage.ref('user_1${image.name}').putFile(File(image.path));
       await storage
-          .ref()
-          .child('user_1/${image.name}')
+          .ref('${user.id}/${image.name}')
+          //.child('user_1/${image.name}')
           .putFile(File(image.path))
-          .then((p0) => DatabaseRepository().updateUserPictures(image.name));
+          .then((p0) =>
+              DatabaseRepository().updateUserPictures(user, image.name));
       print('${image.path} sucess here image');
     } catch (err) {
       print(err);
@@ -29,10 +30,10 @@ class StorageRepository extends BaseStorageRepository {
   }
 
   @override
-  Future<String> getDownloadURL(String imageName) async {
+  Future<String> getDownloadURL(User user, String imageName) async {
     // TODO: implement getDownloadURL
     String downloadURL =
-        await storage.ref('user_1/$imageName').getDownloadURL();
+        await storage.ref('${user.id}/$imageName').getDownloadURL();
     return downloadURL;
   }
 }

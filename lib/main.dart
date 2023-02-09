@@ -62,11 +62,11 @@ class MyApp extends StatelessWidget {
           //      storageRepository: context.read<StorageRepository>(),
           //    ),
           //  ),
-          BlocProvider(
-            create: (_) => ImagesBloc(
-              databaseRepository: DatabaseRepository(),
-            )..add(LoadImages()),
-          ),
+          // BlocProvider(
+          //   create: (_) => ImagesBloc(
+          //     databaseRepository: DatabaseRepository(),
+          //   )..add(LoadImages()),
+          // ),
           BlocProvider(
               create: (context) =>
                   AuthBloc(authRepository: context.read<AuthRepository>())),

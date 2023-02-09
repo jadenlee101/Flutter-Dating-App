@@ -1,3 +1,4 @@
+/*
 part of 'images_bloc.dart';
 
 class ImagesState extends Equatable {
@@ -17,3 +18,5 @@ class ImagesLoaded extends ImagesState {
   @override
   List<Object> get props => [imageUrls];
 }
+
+*/

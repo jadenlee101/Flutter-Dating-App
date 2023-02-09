@@ -44,11 +44,11 @@ class CustomImageContainer extends StatelessWidget {
                       print('object');
                     }
                     if (_image != null) {
-                      StorageRepository().uploadImage(_image);
+                      //StorageRepository().uploadImage(_image);
                       print('UPLOADING');
-                      // BlocProvider.of<OnboardingBloc>(context).add(
-                      //     UpdateUserImages(image: _image),
-                      //   );
+                      context
+                          .read<OnboardingBloc>()
+                          .add(UpdateUserImages(image: _image));
                     }
                   }),
                   icon: Icon(Icons.add_circle,

@@ -1,3 +1,4 @@
+/*
 part of 'images_bloc.dart';
 
 abstract class ImagesEvent extends Equatable {
@@ -19,3 +20,5 @@ class UpdateImages extends ImagesEvent {
 }
 
 class StartUpdate extends ImagesEvent {}
+
+*/

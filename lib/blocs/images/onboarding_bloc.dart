@@ -1,5 +1,3 @@
-/*
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,8 +28,19 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
     StartOnboarding event,
     Emitter<OnboardingState> emit,
   ) async {
-    await _databaseRepository.createUser(event.user);
-    emit(OnboardingLoaded(user: event.user));
+    User user = User(
+      id: '',
+      name: '',
+      age: 0,
+      gender: '',
+      imageUrls: [],
+      interests: [],
+      bio: '',
+      jobTitle: '',
+      location: '',
+    );
+    String documentId = await _databaseRepository.createUser(user);
+    emit(OnboardingLoaded(user: user.copyWith(id: documentId)));
   }
 
   void _onUpdateUser(
@@ -58,10 +67,9 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         print(e);
       }
 
-      _databaseRepository.getUser(user.id).listen((user) {
+      _databaseRepository.getUser(user.id!).listen((user) {
         add(UpdateUser(user: user));
       });
     }
   }
 }
-*/

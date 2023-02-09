@@ -1,6 +1,9 @@
+import 'package:Foggle/blocs/images/onboarding_bloc.dart';
+import 'package:Foggle/repositories/database/database_repository.dart';
+import 'package:Foggle/repositories/storage/storage_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:bloc/bloc.dart';
 import '../../cubits/signup/signup_cubit.dart';
 import '../../repositories/auth/auth_repository.dart';
 
@@ -13,9 +16,21 @@ class OnboardingScreen extends StatelessWidget {
   static Route route() {
     return MaterialPageRoute(
       settings: RouteSettings(name: routeName),
-      builder: (context) => BlocProvider(
-        create: (context) =>
-            SignupCubit(authRepository: context.read<AuthRepository>()),
+      builder: (context) => MultiBlocProvider(
+        providers: [
+          BlocProvider<SignupCubit>(
+            create: (context) =>
+                SignupCubit(authRepository: context.read<AuthRepository>()),
+          ),
+          BlocProvider<OnboardingBloc>(
+            create: (_) => OnboardingBloc(
+              databaseRepository: DatabaseRepository(),
+              storageRepository: StorageRepository(),
+            )..add(
+                StartOnboarding(),
+              ),
+          ),
+        ],
         child: OnboardingScreen(),
       ),
     );

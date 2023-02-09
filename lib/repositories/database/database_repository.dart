@@ -9,33 +9,35 @@ class DatabaseRepository extends BaseDatabaseRepository {
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   @override
-  Stream<User> getUser() {
+  Stream<User> getUser(String userId) {
     return _firebaseFirestore
         .collection('users')
-        .doc('SdRboMtMHFc5BUZSdTF8')
+        .doc(userId)
         .snapshots()
         .map((snap) => User.fromSnapshot(snap));
   }
 
   @override
-  Future<void> updateUserPictures(String imageName) async {
+  Future<void> updateUserPictures(User user, String imageName) async {
     // TODO: implement updateUserPictures
-    String downloadUrl = await StorageRepository().getDownloadURL(imageName);
+    String downloadUrl =
+        await StorageRepository().getDownloadURL(user, imageName);
 
-    return _firebaseFirestore
-        .collection('users')
-        .doc('SdRboMtMHFc5BUZSdTF8')
-        .update({
+    return _firebaseFirestore.collection('users').doc(user.id).update({
       'imageUrls': FieldValue.arrayUnion([downloadUrl])
     });
   }
 
   @override
-  Future<void> createUser(User user) async {
-    await _firebaseFirestore
+  Future<String> createUser(User user) async {
+    String documentId = await _firebaseFirestore
         .collection('users')
-        .doc('SdRboMtMHFc5BUZSdTF8')
-        .set(user.toMap());
+        .add(user.toMap())
+        .then((value) {
+      print('user added, ID: ${value.id}');
+      return value.id;
+    });
+    return documentId;
   }
 
   @override

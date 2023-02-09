@@ -17,39 +17,33 @@ class Pictures extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //return BlocBuilder<OnboardingBloc, OnboardingState>(
-    //  builder: (context, state) {
-    //   if (state is OnboardingLoading) {
-    //      return Center(
-    ////       child: CircularProgressIndicator(),
-    //      );
-    //   }
-    //   if (state is OnboardingLoaded) {
-    //     var images = state.user.imageUrls;
-    //    var imageCount = images.length;
+    return BlocBuilder<OnboardingBloc, OnboardingState>(
+        builder: (context, state) {
+      if (state is OnboardingLoading) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      if (state is OnboardingLoaded) {
+        var images = state.user.imageUrls;
+        var imageCount = images.length;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomTextHeader(
-                tabController: tabController,
-                text: 'Add 2 or More Picture',
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              BlocBuilder<ImagesBloc, ImagesState>(builder: (context, state) {
-                if (state is ImagesLoading) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                if (state is ImagesLoaded) {
-                  var imageCount = state.imageUrls.length;
-                  return SizedBox(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextHeader(
+                    tabController: tabController,
+                    text: 'Add 2 or More Picture',
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
                     height: 350,
                     child: GridView.builder(
                         gridDelegate:
@@ -60,38 +54,33 @@ class Pictures extends StatelessWidget {
                           return (imageCount > index)
                               ? CustomImageContainer(
                                   tabController: tabController,
-                                  imageUrl: state.imageUrls[index])
+                                  imageUrl: images[index])
                               : CustomImageContainer(
                                   tabController: tabController);
                         }),
-                  );
-                } else {
-                  return Text('Something wrong');
-                }
-              }),
+                  )
+                ],
+              ),
+              Column(
+                children: [
+                  StepProgressIndicator(
+                    totalSteps: 6,
+                    currentStep: 4,
+                    selectedColor: Theme.of(context).primaryColor,
+                    unselectedColor: Theme.of(context).backgroundColor,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  CustomButton(tabController: tabController, title: 'Next Step')
+                ],
+              ),
             ],
           ),
-          Column(
-            children: [
-              StepProgressIndicator(
-                totalSteps: 6,
-                currentStep: 4,
-                selectedColor: Theme.of(context).primaryColor,
-                unselectedColor: Theme.of(context).backgroundColor,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              CustomButton(tabController: tabController, title: 'Next Step')
-            ],
-          ),
-        ],
-      ),
-    );
-    //  } else {
-    //    return Text('Something went worng ');
-    //   }
-    // },
-    // );
+        );
+      } else {
+        return Text('Something went worng ');
+      }
+    });
   }
 }
