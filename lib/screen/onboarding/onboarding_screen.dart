@@ -43,6 +43,9 @@ class OnboardingScreen extends StatelessWidget {
     Tab(text: 'Demo'),
     Tab(text: 'Pictures'),
     Tab(text: 'Bio'),
+    Tab(
+      text: 'Location',
+    )
   ];
 
   @override
@@ -68,6 +71,7 @@ class OnboardingScreen extends StatelessWidget {
               Demo(tabController: tabController),
               Pictures(tabController: tabController),
               Bio(tabController: tabController),
+              Location(tabController: tabController)
             ]),
           );
         }),

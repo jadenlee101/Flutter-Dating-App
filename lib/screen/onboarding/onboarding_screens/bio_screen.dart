@@ -41,9 +41,14 @@ class Bio extends StatelessWidget {
                       height: 10,
                     ),
                     CustomTextField(
-                        controller: controller,
-                        //tabController: tabController,
-                        text: 'Enter Your Bio'),
+                      controller: controller,
+                      //tabController: tabController,
+                      text: 'Enter Your Bio',
+                      onChanged: (value) {
+                        context.read<OnboardingBloc>().add(
+                            UpdateUser(user: state.user.copyWith(bio: value)));
+                      },
+                    ),
                     SizedBox(
                       height: 100,
                     ),

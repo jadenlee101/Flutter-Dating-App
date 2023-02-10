@@ -26,6 +26,7 @@ class AppRouter {
         return ProfileScreen.route();
       case LoginScreen.routeName:
         return LoginScreen.route();
+
       default:
         return _errorRoute();
     }
