@@ -41,27 +41,5 @@ class SwipeBloc extends Bloc<SwipeEvent, SwipeState> {
         emit(SwipeLoaded(users: List.from(state.users)..remove(event.user)));
       } catch (_) {}
     }
-
-    Stream<SwipeState> _mapSwipeLeftToState(
-      //SwipeLeftEvent event,
-      SwipeState state,
-    ) async* {
-      if (state is SwipeLoaded) {
-        try {
-          //  yield SwipeLoaded(users: List.from(state.users)..remove(event.user));
-        } catch (_) {}
-      }
-    }
-
-    Stream<SwipeState> _mapSwipeRightToState(
-      // SwipeRightEvent event,
-      SwipeState state,
-    ) async* {
-      if (state is SwipeLoaded) {
-        try {
-          yield SwipeLoaded(users: List.from(state.users)..remove(event.user));
-        } catch (_) {}
-      }
-    }
   }
 }
