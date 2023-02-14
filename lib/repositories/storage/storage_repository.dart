@@ -18,13 +18,12 @@ class StorageRepository extends BaseStorageRepository {
       //await storage.ref('user_1${image.name}').putFile(File(image.path));
       await storage
           .ref('${user.id}/${image.name}')
-          //.child('user_1/${image.name}')
           .putFile(File(image.path))
           .then((p0) =>
               DatabaseRepository().updateUserPictures(user, image.name));
       print('${image.path} sucess here image');
     } catch (err) {
-      print(err);
+      print('Here is the error =  ${err}');
       // print('${user.id} error here');
     }
   }
