@@ -33,6 +33,8 @@ class StorageRepository extends BaseStorageRepository {
     // TODO: implement getDownloadURL
     String downloadURL =
         await storage.ref('${user.id}/$imageName').getDownloadURL();
+
+    print('Heres the url downloaded ${downloadURL}');
     return downloadURL;
   }
 }
