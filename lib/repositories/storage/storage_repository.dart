@@ -23,7 +23,7 @@ class StorageRepository extends BaseStorageRepository {
               DatabaseRepository().updateUserPictures(user, image.name));
       print('${image.path} sucess here image');
     } catch (err) {
-      print('Here is the error =  ${err}');
+      print('Here is the uploadImage error =  ${err}');
       // print('${user.id} error here');
     }
   }
