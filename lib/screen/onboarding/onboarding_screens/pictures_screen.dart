@@ -27,6 +27,7 @@ class Pictures extends StatelessWidget {
       if (state is OnboardingLoaded) {
         var images = state.user.imageUrls;
         var imageCount = images.length;
+        print('picture_screen images ${images}');
 
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 50),
