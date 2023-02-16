@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  final String? id;
+  final String id;
   final String name;
   final int age;
   final String gender;
@@ -14,7 +14,7 @@ class User extends Equatable {
   final String location;
 
   const User(
-      {this.id,
+      {required this.id,
       required this.name,
       required this.age,
       required this.imageUrls,
@@ -32,6 +32,7 @@ class User extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'age': age,
       'gender': gender,
