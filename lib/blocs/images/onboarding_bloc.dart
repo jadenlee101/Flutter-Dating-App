@@ -67,7 +67,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         print(e);
       }
 
-      _databaseRepository.getUser(user.id!).listen((user) {
+      _databaseRepository.getUser(user.id).listen((user) {
         add(UpdateUser(user: user));
       });
     }
