@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 
 import 'blocs/auth/auth_bloc.dart';
-import 'blocs/images/images_bloc.dart';
+
 import 'blocs/images/onboarding_bloc.dart';
 import 'blocs/swipe/swipe_bloc.dart';
 import 'config/app_router.dart';

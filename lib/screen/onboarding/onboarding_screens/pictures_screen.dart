@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-import '../../../blocs/images/images_bloc.dart';
 import '../../../blocs/images/onboarding_bloc.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_image_container.dart';
