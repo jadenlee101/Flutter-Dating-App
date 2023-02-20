@@ -1,3 +1,4 @@
+import 'package:Foggle/screen/onboarding/onboarding_screens/splash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +27,8 @@ class AppRouter {
         return ProfileScreen.route();
       case LoginScreen.routeName:
         return LoginScreen.route();
+      case SplashScreen.routeName:
+        return SplashScreen.route();
 
       default:
         return _errorRoute();
