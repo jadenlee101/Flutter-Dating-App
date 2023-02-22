@@ -79,7 +79,7 @@ class MyApp extends StatelessWidget {
           theme: theme(),
           //home: HomeScreen(),
           onGenerateRoute: AppRouter.onGenerateRoute,
-          initialRoute: OnboardingScreen.routeName,
+          initialRoute: SplashScreen.routeName,
         ),
       ),
     );
