@@ -1,5 +1,6 @@
 //import 'dart:html';
 
+import 'package:Foggle/cubits/signup/signup_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'blocs/auth/auth_bloc.dart';
@@ -46,7 +47,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider(create: ((context) => AuthRepository())),
+        RepositoryProvider(
+          create: (context) => AuthRepository(),
+        ),
         RepositoryProvider(
           create: (context) => DatabaseRepository(),
         ),
@@ -56,20 +59,18 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          //  BlocProvider<OnboardingBloc>(
-          //   create: (context) => OnboardingBloc(
-          //    databaseRepository: context.read<DatabaseRepository>(),
-          //      storageRepository: context.read<StorageRepository>(),
-          //    ),
-          //  ),
-          // BlocProvider(
-          //   create: (_) => ImagesBloc(
-          //     databaseRepository: DatabaseRepository(),
-          //   )..add(LoadImages()),
-          // ),
           BlocProvider(
               create: (context) =>
                   AuthBloc(authRepository: context.read<AuthRepository>())),
+          BlocProvider<SignupCubit>(
+              create: (context) =>
+                  SignupCubit(authRepository: context.read<AuthRepository>())),
+          BlocProvider<OnboardingBloc>(
+            create: (context) => OnboardingBloc(
+              databaseRepository: context.read<DatabaseRepository>(),
+              storageRepository: context.read<StorageRepository>(),
+            ),
+          ),
           BlocProvider(
             create: (context) => SwipeBloc()..add(LoadUsers(users: User.users)),
           ),

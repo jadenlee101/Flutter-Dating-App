@@ -12,15 +12,15 @@ class StartOnboarding extends OnboardingEvent {
 
   const StartOnboarding({
     this.user = const User(
-      id: ' ',
-      name: ' ',
+      id: '',
+      name: '',
       age: 0,
-      gender: ' ',
+      gender: '',
       imageUrls: [],
-      jobTitle: ' ',
       interests: [],
-      bio: ' ',
-      location: ' ',
+      bio: '',
+      jobTitle: '',
+      location: '',
     ),
   });
 

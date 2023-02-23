@@ -16,23 +16,7 @@ class OnboardingScreen extends StatelessWidget {
   static Route route() {
     return MaterialPageRoute(
       settings: RouteSettings(name: routeName),
-      builder: (context) => MultiBlocProvider(
-        providers: [
-          BlocProvider<SignupCubit>(
-            create: (context) =>
-                SignupCubit(authRepository: context.read<AuthRepository>()),
-          ),
-          BlocProvider<OnboardingBloc>(
-            create: (_) => OnboardingBloc(
-              databaseRepository: DatabaseRepository(),
-              storageRepository: StorageRepository(),
-            )..add(
-                StartOnboarding(),
-              ),
-          ),
-        ],
-        child: OnboardingScreen(),
-      ),
+      builder: (context) => OnboardingScreen(),
     );
   }
 
